@@ -1,16 +1,18 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers, unnecessary_null_comparison, use_build_context_synchronously, avoid_print, unnecessary_brace_in_string_interps, prefer_const_constructors
+// ignore_for_file: no_leading_underscores_for_local_identifiers, unnecessary_null_comparison, use_build_context_synchronously, avoid_print, unnecessary_brace_in_string_interps, prefer_const_constructors, unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_nutrition/data/nutritionist.dart';
 import 'package:easy_nutrition/layout/nutritionist/auth/nutritionist_register.dart';
-import 'package:easy_nutrition/layout/nutritionist/nutritionist_tab.dart';
 import 'package:easy_nutrition/layout/shared/start_page.dart';
+import 'package:easy_nutrition/layout/shared/tabs.dart';
+import 'package:easy_nutrition/services/user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn _googleSignIn = GoogleSignIn();
+final UserService _userService = UserService();
 
 class NutritionistService {
   final db = FirebaseFirestore.instance;
@@ -32,7 +34,7 @@ class NutritionistService {
               if (doc.exists) {
                 Navigator.of(context).push(
                     MaterialPageRoute<void>(builder: (BuildContext context) {
-                  return NutritionistTabs();
+                  return Tabs();
                 }));
               } else {
                 Navigator.of(context).push(
@@ -74,6 +76,7 @@ class NutritionistService {
       String phoneNumber,
       String photoUrl,
       BuildContext context) async {
+    _userService.createUser(id, "nutritionist", photoUrl);
     final nutritionist = Nutritionist(
         id: id,
         firstName: firstName,
@@ -92,7 +95,7 @@ class NutritionistService {
         .doc(id);
     await docRef.set(nutritionist).then((value) => Navigator.of(context)
             .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-          return const NutritionistTabs();
+          return Tabs();
         })));
   }
 

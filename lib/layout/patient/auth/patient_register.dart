@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, non_constant_identifier_names, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'package:easy_nutrition/services/patient_services.dart';
 import 'package:easy_nutrition/utilities/designs.dart';
@@ -166,10 +166,10 @@ class InputTextWidget extends StatelessWidget {
 
 String? ValidateText(String label, String value) {
   if (value.isEmpty) {
-    return '${label} es obligatorio';
+    return '$label es obligatorio';
   }
   if (value.length < 3) {
-    return '${label} debe tener mínimo 3 carácteres';
+    return '$label debe tener mínimo 3 carácteres';
   }
   return null;
 }

@@ -10,10 +10,8 @@ environment:
 
 dependencies:
   cloud_firestore: ^3.4.9
-  cupertino_icons: ^1.0.2
   firebase_auth: ^3.10.0
   firebase_core: ^1.23.0
-  firebase_messaging: ^13.0.3
   flutter:
     sdk: flutter
   google_sign_in: ^5.4.2

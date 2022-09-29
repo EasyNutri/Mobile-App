@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:easy_nutrition/firebase_options.dart';
-import 'package:easy_nutrition/layout/patient/patient_tab.dart';
+import 'package:easy_nutrition/layout/shared/tabs.dart';
 import 'package:easy_nutrition/layout/shared/start_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,7 +37,7 @@ class MyAppHome extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data!.emailVerified) {
-            return PatientTabs();
+            return Tabs();
           } else {
             return StartPage();
           }
