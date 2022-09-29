@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "625199516844",
+    "project_id": "easynutrition-e052b",
+    "storage_bucket": "easynutrition-e052b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625199516844:android:51ce59d7bbcb22432f6309",
+        "android_client_info": {
+          "package_name": "com.innovatech.easy_nutrition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625199516844-el2vomfjn4bob5d4k1lvglqohrb2sld1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.innovatech.easy_nutrition",
+            "certificate_hash": "e32e5507027bfef259625f00d73d9adcf161456c"
+          }
+        },
+        {
+          "client_id": "625199516844-p2lffspf0kjksf4o70a1kr7k7ca67cb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNWVMQVj9xLjyv2MocRCOKtLnRGMKKyno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625199516844-p2lffspf0kjksf4o70a1kr7k7ca67cb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
