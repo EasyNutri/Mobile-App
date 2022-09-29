@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-const Color colorPrincipal1 = Color(0xFF86DD75);
+const Color kmainColor1 = Color(0xFF86DD75);
 
-const Color colorPrincipal2 = Color(0xFF37B51F);
+const Color kmainColor2 = Color(0xFF37B51F);
 
-const Color colorPrincipal3 = Color(0xFF47FF86);
+const Color kmainColor3 = Color(0xFF47FF86);
 
 
 
@@ -45,7 +45,7 @@ ButtonStyle styleBlackButton = ButtonStyle(
 );
 
 ButtonStyle styleButton1 = ButtonStyle(
-  backgroundColor: MaterialStateProperty.all<Color>(colorPrincipal2),
+  backgroundColor: MaterialStateProperty.all<Color>(kmainColor2),
   foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
   fixedSize: MaterialStateProperty.all(const Size(160.0, 46.0)),
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -56,7 +56,7 @@ ButtonStyle styleButton1 = ButtonStyle(
 );
 
 ButtonStyle styleButton2 = ButtonStyle(
-  backgroundColor: MaterialStateProperty.all<Color>(colorPrincipal1),
+  backgroundColor: MaterialStateProperty.all<Color>(kmainColor1),
   foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
   fixedSize: MaterialStateProperty.all(const Size(250.0, 46.0)),
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

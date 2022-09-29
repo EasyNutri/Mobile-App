@@ -74,7 +74,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Inicio',
-            backgroundColor: colorPrincipal3,
+            backgroundColor: kmainColor3,
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -82,7 +82,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Reserva',
-            backgroundColor: colorPrincipal3,
+            backgroundColor: kmainColor3,
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -90,7 +90,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Chat',
-            backgroundColor: colorPrincipal3,
+            backgroundColor: kmainColor3,
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -98,7 +98,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Ajustes',
-            backgroundColor: colorPrincipal3,
+            backgroundColor: kmainColor3,
           ),
         ],
         currentIndex: _selectedIndex,
@@ -133,7 +133,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.home_outlined,
-                    color: colorPrincipal1,
+                    color: kmainColor3,
                   ),
                   label: Text('Inicio'),
                 ),
@@ -144,7 +144,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.calendar_month,
-                    color: colorPrincipal1,
+                    color: kmainColor3,
                   ),
                   label: Text('Reserva'),
                 ),
@@ -155,7 +155,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.chat,
-                    color: colorPrincipal1,
+                    color: kmainColor3,
                   ),
                   label: Text('Chat'),
                 ),
@@ -166,7 +166,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.settings,
-                    color: colorPrincipal1,
+                    color: kmainColor3,
                   ),
                   label: Text('Ajustes'),
                 )
