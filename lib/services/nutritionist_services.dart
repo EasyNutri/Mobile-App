@@ -76,7 +76,8 @@ class NutritionistService {
       String phoneNumber,
       String photoUrl,
       BuildContext context) async {
-    _userService.createUser(id, "nutritionist", photoUrl);
+    String name = firstName + lastName;
+    _userService.createUser(id, name, "nutritionist", photoUrl);
     final nutritionist = Nutritionist(
         id: id,
         firstName: firstName,

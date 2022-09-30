@@ -5,11 +5,12 @@ import 'dart:io';
 import 'package:easy_nutrition/layout/nutritionist/appointment/nutritionist_appointment.dart';
 import 'package:easy_nutrition/layout/nutritionist/home/nutritionist_home.dart';
 import 'package:easy_nutrition/services/user_service.dart';
+import 'package:easy_nutrition/widgets/drawer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:easy_nutrition/layout/patient/home/patient_home.dart';
 import 'package:easy_nutrition/layout/patient/appointment/patient_appointment.dart';
-import 'package:easy_nutrition/layout/shared/chat_page.dart';
+import 'package:easy_nutrition/layout/shared/chat/chat_list.dart';
 import 'package:easy_nutrition/layout/shared/settings_page.dart';
 import 'package:easy_nutrition/utilities/designs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,14 +31,14 @@ class _TabsState extends State<Tabs> {
   final List<Widget> _patientTabs = [
     PatientHome(),
     PatientAppointment(),
-    ChatPage(),
+    ChatList(),
     SettingsPage()
   ];
 
   final List<Widget> _nutritionTabs = [
     NutritionistHome(),
     NutritionistAppointment(),
-    ChatPage(),
+    ChatList(),
     SettingsPage()
   ];
 
@@ -61,9 +62,9 @@ class _TabsState extends State<Tabs> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        title: MyTitleApp(user.uid, context),
+        backgroundColor: Colors.white,
+        title: MyAppBarTitle(context: context),
       ),
       body: MyBodyApp(user.uid, context),
       bottomNavigationBar: BottomNavigationBar(
@@ -74,7 +75,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Inicio',
-            backgroundColor: kmainColor3,
+            backgroundColor: kmainColor1,
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -82,7 +83,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Reserva',
-            backgroundColor: kmainColor3,
+            backgroundColor: kmainColor1,
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -90,7 +91,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Chat',
-            backgroundColor: kmainColor3,
+            backgroundColor: kmainColor1,
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -98,7 +99,7 @@ class _TabsState extends State<Tabs> {
               color: Colors.black,
             ),
             label: 'Ajustes',
-            backgroundColor: kmainColor3,
+            backgroundColor: kmainColor1,
           ),
         ],
         currentIndex: _selectedIndex,
@@ -113,10 +114,9 @@ class _TabsState extends State<Tabs> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
           foregroundColor: Colors.black,
-          title: MyTitleApp(user.uid, context),
+          backgroundColor: Colors.white,
+          title: MyAppBarTitle(context: context),
         ),
         body: Row(
           children: [
@@ -133,7 +133,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.home_outlined,
-                    color: kmainColor3,
+                    color: kmainColor1,
                   ),
                   label: Text('Inicio'),
                 ),
@@ -144,7 +144,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.calendar_month,
-                    color: kmainColor3,
+                    color: kmainColor1,
                   ),
                   label: Text('Reserva'),
                 ),
@@ -155,7 +155,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.chat,
-                    color: kmainColor3,
+                    color: kmainColor1,
                   ),
                   label: Text('Chat'),
                 ),
@@ -166,7 +166,7 @@ class _TabsState extends State<Tabs> {
                   ),
                   selectedIcon: Icon(
                     Icons.settings,
-                    color: kmainColor3,
+                    color: kmainColor1,
                   ),
                   label: Text('Ajustes'),
                 )
@@ -179,28 +179,6 @@ class _TabsState extends State<Tabs> {
             Expanded(child: MyBodyApp(user.uid, context))
           ],
         ));
-  }
-
-  Widget MyTitleApp(String uid, BuildContext context) {
-    return FutureBuilder(
-      future: _userService.getUser(uid),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          Text("Cargando");
-        }
-        var myUser = snapshot.data;
-        var userType = myUser!.userType;
-        if (userType == "patient") {
-          return PatientTitle(context);
-        }
-        if (userType == 'nutritionist') {
-          return NutritionTitle(context);
-        }
-        return Center(child: Text("Falla en la carga"));
-
-        print(userType);
-      },
-    );
   }
 
   Widget MyBodyApp(String uid, BuildContext context) {
@@ -222,62 +200,6 @@ class _TabsState extends State<Tabs> {
 
         print(userType);
       },
-    );
-  }
-
-  Widget PatientTitle(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(
-          backgroundImage: NetworkImage(user.photoURL!),
-        ),
-        Container(
-          margin: EdgeInsets.only(left: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Hola, ${user.displayName}",
-                style: kHeading4,
-              ),
-              Text(
-                "Paciente | Plan Free",
-                style: kHeading5,
-              )
-            ],
-          ),
-        ),
-        Spacer(),
-        Icon(Icons.notifications_none_outlined)
-      ],
-    );
-  }
-
-  Widget NutritionTitle(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(
-          backgroundImage: NetworkImage(user.photoURL!),
-        ),
-        Container(
-          margin: EdgeInsets.only(left: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Hola, ${user.displayName}",
-                style: kHeading4,
-              ),
-              Text(
-                "Nutricionista",
-                style: kHeading5,
-              )
-            ],
-          ),
-        ),
-        Spacer(),
-        Icon(Icons.notifications_none_outlined)
-      ],
     );
   }
 }

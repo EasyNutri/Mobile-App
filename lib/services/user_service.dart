@@ -7,8 +7,10 @@ import 'package:flutter/material.dart';
 class UserService {
   final db = FirebaseFirestore.instance;
 
-  void createUser(String id, String userType, String photoUrl) async {
-    final user = MyUser(id: id, userType: userType, photoUrl: photoUrl);
+  void createUser(
+      String id, String name, String userType, String photoUrl) async {
+    final user =
+        MyUser(id: id, name: name, userType: userType, photoUrl: photoUrl);
 
     final docRef = db
         .collection("users")
@@ -22,6 +24,7 @@ class UserService {
 
   Future<MyUser> getUser(String uid) async {
     MyUser user;
+    var name = "";
     var userType = "";
     var photoUrl = "";
 
@@ -30,6 +33,7 @@ class UserService {
       await docRef.get().then(
         (DocumentSnapshot doc) {
           final data = doc.data() as Map<String, dynamic>;
+          name = data["name"];
           userType = data["userType"];
           photoUrl = data["photoUrl"];
         },
@@ -38,6 +42,30 @@ class UserService {
     } catch (e) {
       print(e);
     }
-    return user = MyUser(id: uid, userType: userType, photoUrl: photoUrl);
+    return user =
+        MyUser(id: uid, name: name, userType: userType, photoUrl: photoUrl);
+  }
+
+  Future<List<MyUser>> getAllUser() async {
+    List<MyUser> userList = [];
+    MyUser user;
+
+    try {
+      await db.collection("users").get().then((event) {
+        for (var doc in event.docs) {
+          user = MyUser(
+              id: doc.data()["id"],
+              name: doc.data()["name"],
+              photoUrl: doc.data()["photoUrl"],
+              userType: doc.data()["userType"]);
+          userList.add(user);
+        }
+      });
+    } catch (e) {
+      print(e);
+    }
+
+    print(userList);
+    return userList;
   }
 }

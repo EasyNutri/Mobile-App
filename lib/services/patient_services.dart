@@ -70,7 +70,8 @@ class PatientService {
 
   void createPatient(String id, String firstName, String lastName, String email,
       String phoneNumber, String photoUrl, BuildContext context) async {
-    _userService.createUser(id, "patient", photoUrl);
+    String name = firstName + lastName;
+    _userService.createUser(id, name, "patient", photoUrl);
     final patient = Patient(
         id: id,
         firstName: firstName,

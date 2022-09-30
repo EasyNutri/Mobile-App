@@ -101,7 +101,7 @@ class _NutritionistRegisterState extends State<NutritionistRegister> {
                       child: Padding(
                         padding: EdgeInsets.all(20.0),
                         child: ElevatedButton(
-                          style: styleButton1,
+                          style: styleGreenLargeButton,
                           onPressed: () => {
                             insertDataNutritionist(
                                 user.uid,
