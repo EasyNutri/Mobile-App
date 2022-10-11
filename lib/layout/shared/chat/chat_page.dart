@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_field, sort_child_properties_last
 
+import 'package:easy_nutrition/utilities/designs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -24,8 +25,8 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
+          backgroundColor: myWhiteColor,
+          foregroundColor: myBlackColor,
           title: Row(
             children: [
               CircleAvatar(

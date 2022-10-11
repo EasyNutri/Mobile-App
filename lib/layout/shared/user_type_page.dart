@@ -25,7 +25,7 @@ class UserTypePage extends StatelessWidget {
                 children: [
                   Text(
                     "¿Que tipo de usuario eres?",
-                    style: kHeading3,
+                    style: myHeading3,
                     textAlign: TextAlign.center,
                   ),
                   Padding(
@@ -33,7 +33,7 @@ class UserTypePage extends StatelessWidget {
                         left: 60, right: 60, top: 10, bottom: 20),
                     child: Text(
                       "Elige tu tipo de usuario para comenzar a utilizar la aplicación",
-                      style: kHeading4,
+                      style: myHeading4,
                       textAlign: TextAlign.justify,
                     ),
                   ),
@@ -60,7 +60,7 @@ class UserTypePage extends StatelessWidget {
                     onPressed: () {
                       loginPatient(context);
                     },
-                    child: const Text('SOY PACIENTE', style: kHeading4),
+                    child: const Text('SOY PACIENTE', style: myHeading4),
                   ),
                 ],
               ),
@@ -84,7 +84,7 @@ class UserTypePage extends StatelessWidget {
                     onPressed: () {
                       loginNutritionist(context);
                     },
-                    child: const Text('SOY NUTRICIONISTA', style: kHeading4),
+                    child: const Text('SOY NUTRICIONISTA', style: myHeading4),
                   )
                 ],
               ),

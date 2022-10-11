@@ -1,12 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, dead_code, avoid_print, prefer_interpolation_to_compose_strings
 
-import 'dart:io';
-
 import 'package:easy_nutrition/layout/nutritionist/appointment/nutritionist_appointment.dart';
 import 'package:easy_nutrition/layout/nutritionist/home/nutritionist_home.dart';
 import 'package:easy_nutrition/services/user_service.dart';
-import 'package:easy_nutrition/widgets/drawer.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:easy_nutrition/widgets/widgets.dart';
 
 import 'package:easy_nutrition/layout/patient/home/patient_home.dart';
 import 'package:easy_nutrition/layout/patient/appointment/patient_appointment.dart';
@@ -50,20 +47,12 @@ class _TabsState extends State<Tabs> {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
-      return WebTab(context);
-    } else {
-      return AndroidTab(context);
-    }
-  }
-
-  Widget AndroidTab(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: myWhiteColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
+        foregroundColor: myBlackColor,
+        backgroundColor: myWhiteColor,
         title: MyAppBarTitle(context: context),
       ),
       body: MyBodyApp(user.uid, context),
@@ -72,113 +61,42 @@ class _TabsState extends State<Tabs> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
-              color: Colors.black,
+              color: myBlackColor,
             ),
             label: 'Inicio',
-            backgroundColor: kmainColor1,
+            backgroundColor: myGreenColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_month,
-              color: Colors.black,
+              color: myBlackColor,
             ),
             label: 'Reserva',
-            backgroundColor: kmainColor1,
+            backgroundColor: myGreenColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.chat,
-              color: Colors.black,
+              color: myBlackColor,
             ),
             label: 'Chat',
-            backgroundColor: kmainColor1,
+            backgroundColor: myGreenColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.settings,
-              color: Colors.black,
+              color: myBlackColor,
             ),
             label: 'Ajustes',
-            backgroundColor: kmainColor1,
+            backgroundColor: myGreenColor,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
+        selectedItemColor: myBlackColor,
         onTap: _onItemTapped,
         iconSize: 45.0,
       ),
     );
-  }
-
-  Widget WebTab(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.white,
-          title: MyAppBarTitle(context: context),
-        ),
-        body: Row(
-          children: [
-            NavigationRail(
-              selectedIndex: _selectedIndex,
-              onDestinationSelected: _onItemTapped,
-              labelType: NavigationRailLabelType.all,
-              selectedLabelTextStyle: TextStyle(color: Colors.green),
-              destinations: <NavigationRailDestination>[
-                NavigationRailDestination(
-                  icon: Icon(
-                    Icons.home_outlined,
-                    color: Colors.black,
-                  ),
-                  selectedIcon: Icon(
-                    Icons.home_outlined,
-                    color: kmainColor1,
-                  ),
-                  label: Text('Inicio'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(
-                    Icons.calendar_month,
-                    color: Colors.black,
-                  ),
-                  selectedIcon: Icon(
-                    Icons.calendar_month,
-                    color: kmainColor1,
-                  ),
-                  label: Text('Reserva'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(
-                    Icons.chat,
-                    color: Colors.black,
-                  ),
-                  selectedIcon: Icon(
-                    Icons.chat,
-                    color: kmainColor1,
-                  ),
-                  label: Text('Chat'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.black,
-                  ),
-                  selectedIcon: Icon(
-                    Icons.settings,
-                    color: kmainColor1,
-                  ),
-                  label: Text('Ajustes'),
-                )
-              ],
-            ),
-            const VerticalDivider(
-              thickness: 1,
-              width: 1,
-            ),
-            Expanded(child: MyBodyApp(user.uid, context))
-          ],
-        ));
   }
 
   Widget MyBodyApp(String uid, BuildContext context) {

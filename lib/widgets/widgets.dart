@@ -7,60 +7,6 @@ import 'package:easy_nutrition/services/patient_services.dart';
 import 'package:easy_nutrition/services/user_service.dart';
 import 'package:easy_nutrition/utilities/designs.dart';
 
-class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
-    // if(user.type == paciente)
-    return Drawer(
-      width: MediaQuery.of(context).size.width * 0.5,
-      child: ListView(
-        children: [
-          UserAccountsDrawerHeader(
-            accountName: Text(
-              user.displayName!,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            accountEmail: Text(user.email!),
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(user.photoURL!),
-            ),
-          ),
-          ListTile(
-            title: Text('Perfil'),
-            leading: Icon(Icons.account_circle),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Text('Mi Nutricionista'),
-            leading: Icon(Icons.medical_information),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Text('Configuración'),
-            leading: Icon(Icons.settings),
-            onTap: () {},
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
-            child: Divider(color: Colors.black),
-          ),
-          ListTile(
-            title: Text('Cerrar Sesión'),
-            leading: Icon(Icons.logout),
-            onTap: () {
-              logOut(context);
-            },
-          )
-        ],
-      ),
-    );
-    //else
-  }
-}
-
 class MyAppBarTitle extends StatelessWidget {
   late BuildContext context;
   MyAppBarTitle({Key? key, required this.context}) : super(key: key);
@@ -102,11 +48,11 @@ class MyAppBarTitle extends StatelessWidget {
             children: [
               Text(
                 "Hola, ${currentUser.displayName}",
-                style: kHeading4,
+                style: myHeading4,
               ),
               Text(
                 "Paciente | Plan Free",
-                style: kHeading5,
+                style: myHeading5,
               )
             ],
           ),
@@ -130,11 +76,11 @@ class MyAppBarTitle extends StatelessWidget {
             children: [
               Text(
                 "Hola, ${currentUser.displayName}",
-                style: kHeading4,
+                style: myHeading4,
               ),
               Text(
                 "Nutricionista",
-                style: kHeading5,
+                style: myHeading5,
               )
             ],
           ),

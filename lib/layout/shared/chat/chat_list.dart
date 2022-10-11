@@ -77,14 +77,7 @@ class _ChatListState extends State<ChatList> {
                   anotherUserPhotoUrl: myUser.photoUrl);
             }));
           },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            shape: MaterialStateProperty.all<OutlinedBorder>(
-              const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-            ),
-          ),
+          style: styleChatItem,
           child: Row(
             children: <Widget>[
               //! Foto
@@ -103,7 +96,7 @@ class _ChatListState extends State<ChatList> {
                             height: 50,
                             child: Center(
                               child: CircularProgressIndicator(
-                                color: Colors.blue,
+                                color: myGreenColor,
                                 value: loadingProgress.expectedTotalBytes !=
                                         null
                                     ? loadingProgress.cumulativeBytesLoaded /
@@ -117,14 +110,14 @@ class _ChatListState extends State<ChatList> {
                           return const Icon(
                             Icons.account_circle,
                             size: 50,
-                            color: Colors.grey,
+                            color: myGreyColor,
                           );
                         },
                       )
                     : const Icon(
                         Icons.account_circle,
                         size: 50,
-                        color: Colors.grey,
+                        color: myGreyColor,
                       ),
                 borderRadius: const BorderRadius.all(Radius.circular(25)),
                 clipBehavior: Clip.hardEdge,
@@ -138,8 +131,8 @@ class _ChatListState extends State<ChatList> {
                         child: Text(
                           myUser.name,
                           maxLines: 1,
-                          style:
-                              const TextStyle(color: Colors.blue, fontSize: 20),
+                          style: const TextStyle(
+                              color: myGreenColor, fontSize: 20),
                         ),
                         alignment: Alignment.centerLeft,
                         margin: const EdgeInsets.fromLTRB(10, 0, 0, 5),
@@ -163,7 +156,7 @@ class _ChatListState extends State<ChatList> {
       height: 40,
       child: Row(
         children: [
-          Icon(Icons.search, color: Colors.black, size: 20),
+          Icon(Icons.search, color: myBlackColor, size: 20),
           SizedBox(width: 5),
           Expanded(
             child: TextField(
@@ -176,7 +169,7 @@ class _ChatListState extends State<ChatList> {
               },
               decoration: InputDecoration.collapsed(
                 hintText: 'Buscar usuario',
-                hintStyle: TextStyle(fontSize: 13, color: Colors.black),
+                hintStyle: TextStyle(fontSize: 13, color: myBlackColor),
               ),
             ),
           )
@@ -184,7 +177,7 @@ class _ChatListState extends State<ChatList> {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        color: Colors.grey,
+        color: myGreyColor,
       ),
       padding: EdgeInsets.all(5),
       margin: EdgeInsets.all(30),

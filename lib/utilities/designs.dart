@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
 
-const Color kmainColor1 = Color(0xFF47FF86);
-const Color kmainColor2 = Color(0xFF37B51F);
+const Color myGreenColor = Color(0xFF2BB54E);
+const Color myGreyColor = Color(0xFFE0E0E0);
+const Color myBlackColor = Colors.black;
+const Color myWhiteColor = Colors.white;
 
-const kHeading1 = TextStyle(
+const myHeading1 = TextStyle(
   fontFamily: 'rbold',
   fontSize: 48,
 );
 
-const kHeading2 = TextStyle(
+const myHeading2 = TextStyle(
   fontFamily: 'rbold',
   fontSize: 40,
 );
 
-const kHeading3 = TextStyle(
+const myHeading3 = TextStyle(
   fontFamily: 'rlight',
   fontSize: 32,
 );
 
-const kHeading4 = TextStyle(
+const myHeading4 = TextStyle(
   fontFamily: 'rlight',
   fontSize: 20,
 );
 
-const kHeading5 = TextStyle(
+const myHeading5 = TextStyle(
   fontFamily: 'rbold',
   fontSize: 15,
 );
 
 ButtonStyle styleBlackButton = ButtonStyle(
-  backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+  backgroundColor: MaterialStateProperty.all<Color>(myBlackColor),
+  foregroundColor: MaterialStateProperty.all<Color>(myWhiteColor),
   fixedSize: MaterialStateProperty.all(const Size(290, 46)),
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
     RoundedRectangleBorder(
@@ -39,9 +41,19 @@ ButtonStyle styleBlackButton = ButtonStyle(
   ),
 );
 
+ButtonStyle styleChatItem = ButtonStyle(
+  foregroundColor: MaterialStateProperty.all<Color>(myBlackColor),
+  backgroundColor: MaterialStateProperty.all<Color>(myWhiteColor),
+  shape: MaterialStateProperty.all<OutlinedBorder>(
+    const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+  ),
+);
+
 ButtonStyle styleGreenLargeButton = ButtonStyle(
-  backgroundColor: MaterialStateProperty.all<Color>(kmainColor1),
-  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+  backgroundColor: MaterialStateProperty.all<Color>(myGreenColor),
+  foregroundColor: MaterialStateProperty.all<Color>(myWhiteColor),
   fixedSize: MaterialStateProperty.all(const Size(290, 46)),
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
     RoundedRectangleBorder(
@@ -51,8 +63,8 @@ ButtonStyle styleGreenLargeButton = ButtonStyle(
 );
 
 ButtonStyle styleButton2 = ButtonStyle(
-  backgroundColor: MaterialStateProperty.all<Color>(kmainColor1),
-  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+  backgroundColor: MaterialStateProperty.all<Color>(myGreenColor),
+  foregroundColor: MaterialStateProperty.all<Color>(myWhiteColor),
   fixedSize: MaterialStateProperty.all(const Size(250.0, 46.0)),
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
     RoundedRectangleBorder(
